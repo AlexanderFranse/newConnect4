@@ -1,5 +1,5 @@
 import { loadFeature, defineFeature } from "jest-cucumber";
-import { newBoard } from "../../src/connect4";
+import { newBoard, newPlayer, dropDisc } from "../../src/connect4";
 import { ReadableStreamBYOBReader } from "node:stream/web";
 
 const feature = loadFeature("./cucumber/features/template.feature");
@@ -11,15 +11,15 @@ defineFeature(feature, (test) => {
     });
 
     and(/^player (\d+) plays with the red disc$/, (arg0) => {
-        const player1 = newPlayer("🔴");
+        const player1 = newPlayer(1);
     });
 
     and(/^player (\d+) plays with the yellow disc$/, (arg0) => {
-        //assert player 2 plays with yellow disc
+        const player2 = newPlayer(2);
     });
 
     and(/^player (\d+) put his disc in the first column$/, (arg0) => {
-        //player 1 puts disc in first column
+        dropDisc(player1, 0)
     });
 
     and(/^player (\d+) put his disc in the first column$/, (arg0) => {

@@ -24,12 +24,16 @@ The columns are numbered 0-6 left to right.
 
 🤲 As a player, I want a board that contains 7 columns and 6 rows, so that I am able to play the game
 
-    ✅ E2E scenario - player 1 has a horizontal victory!
+    ✅ Pseudocode E2E scenario - player 1 has a horizontal victory!
+        ✅ Add step for player 2 and his little yellow disc
+        🍅 Implement step for putting player 1 disc in a column
 
 ## Unit
 Create board
     ✅ news board --> 7 columns and 6 rows
 Create player
     ✅ player 1 --> red disc
-    player 2 --> yellow disc
-
+    ✅ player 2 --> yellow disc
+    ✅ player 3??? --> error
+Drop disc
+    🍅 Player 1 drops disc in first column --> bueno!

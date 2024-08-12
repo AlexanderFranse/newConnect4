@@ -1,14 +1,26 @@
-type Cell = 0 | 1 | 2; // 0 for empty, 1 for player 1, 2 for player 2
+type Cell = "" | "🔴" | "🟡";
 type Board = Cell[][];
 
 export function newBoard(): Board {
-    const rows = 6;
-    const cols = 7;
-    
-    // Create a 2D array filled with zeros (empty cells)
-    return Array(rows).fill(null).map(() => Array(cols).fill(0));
+  const rows = 6;
+  const cols = 7;
+
+  return Array(rows)
+    .fill(null)
+    .map(() => Array(cols).fill(""));
 }
 
-export function newPlayer(): string {
-  return "🔴";
+export function newPlayer(player: number): string {
+  if (player === 1) {
+    return "🔴"; // Red disc for player 1
+  }
+  if (player === 2) {
+    return "🟡"; // Yellow disc for player 2
+  }
+  throw new Error("Invalid player number. Must be 1 or 2.");
+}
+
+export function dropDisc(board: Cell[][], player: string, column: number) {
+  board[5][6] = "🔴";
+  return board
 }
