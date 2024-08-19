@@ -34,6 +34,6 @@ Create board
 Create player
     ✅ player 1 --> red disc
     ✅ player 2 --> yellow disc
-    ✅ player 3??? --> error
 Drop disc
-    🍅 Player 1 drops disc in first column --> bueno!
+    ✅ Player 1 drops disc in first column --> bueno!
+    🍅 Player 2 drops disc in first column --> bueno!
