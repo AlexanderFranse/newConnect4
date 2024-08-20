@@ -26,7 +26,9 @@ The columns are numbered 0-6 left to right.
 
     ✅ Pseudocode E2E scenario - player 1 has a horizontal victory!
         ✅ Add step for player 2 and his little yellow disc
-        🍅 Implement step for putting player 1 disc in a column
+        ✅ Implement step for putting player 1 disc in a column
+        ✅ Refactor to remove unneeded parameters and steps
+        ✅ Implement step for asserting the log for a win for player 1
 
 ## Unit
 Create board
@@ -37,3 +39,8 @@ Create player
 Drop disc
     ✅ Player 1 drops disc in first column --> bueno!
     🍅 Player 2 drops disc in first column --> bueno!
+Check for horizontal victory
+    - ["", "", "", "", "", "", "", ""] --> false
+    - ["🔴", "🔴", "🔴", "", "", "", "", ""] --> false
+    - ["🔴", "🔴", "🔴", "🔴", "", "", "", ""] --> true
+ 
