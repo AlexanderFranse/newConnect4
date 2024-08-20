@@ -63,7 +63,6 @@ defineFeature(feature, (test) => {
 
     then("a message is printed which says Player 1 won!", () => {
       expect(mockLog).toHaveBeenCalledWith("Player 1 won!");
-      console.log = console.log; // Restore original console.log
     });
   });
 });
