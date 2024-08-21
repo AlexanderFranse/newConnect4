@@ -40,8 +40,7 @@ Drop disc
     ✅ Player 1 drops disc in first column --> bueno!
     ✅ Player 2 drops disc in first column --> bueno!
     ✅ Player 1, 3rd column that already contains 3 discs --> dropped correctly
-    Player 1, 3rd column that already contains 6 discs --> column full
-    Player 1, 3rd column that already contains 7 discs --> error
+    ✅ Player 1, 3rd column that already contains 7 discs --> error
 Check for horizontal victory
     - ["", "", "", "", "", "", "", ""] --> false
     - ["🔴", "🔴", "🔴", "", "", "", "", ""] --> false

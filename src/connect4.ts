@@ -16,8 +16,8 @@ export function dropDisc(board: Board, player: Cell, column: number): Board {
   for (let row = boardCopy.length - 1; row >= 0; row -= 1) {
     if (boardCopy[row][column] === "") {
       boardCopy[row][column] = player;
-      break;
+      return boardCopy;
     }
   }
-  return boardCopy;
+  throw new Error("Column full!");
 }

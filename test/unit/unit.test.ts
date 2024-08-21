@@ -1,5 +1,5 @@
 import { newBoard, player1,player2, dropDisc } from "../../src/connect4";
-import { emptyConnect4GameBoard, gameBoardInProgress } from "../doubles/double";
+import { emptyConnect4GameBoard, gameBoardInProgress, gameBoardThirdColumnFull } from "../doubles/double";
 
 describe("Connect4 is a game which is played on a board", () => {
   describe("When we set up the game, the game..", () => {
@@ -38,6 +38,13 @@ describe("Connect4 is a game which is played on a board", () => {
         const updatedBoard = dropDisc(board, player1, thirdColumn);
 
         expect(updatedBoard[2][2]).toEqual(player1);
+      });
+
+      it("When a disc is dropped in a column that is full, it should return an error.", () => {
+        const board = gameBoardThirdColumnFull;
+        const thirdColumn = 2;
+
+        expect(() => dropDisc(board, player1, thirdColumn)).toThrow("Column full!");
       });
     });
   });
