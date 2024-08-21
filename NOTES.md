@@ -29,6 +29,7 @@ The columns are numbered 0-6 left to right.
         ✅ Implement step for putting player 1 disc in a column
         ✅ Refactor to remove unneeded parameters and steps
         ✅ Implement step for asserting the log for a win for player 1
+        Fix the steps to use the boardcopy instead of the board
 
 ## Unit
 Create board
@@ -45,4 +46,8 @@ Check for horizontal victory
     - ✅ ["", "", "", "", "", "", "", ""] --> false
     - ✅ ["🔴", "🔴", "🔴", "", "", "", "", ""] --> false
     - ✅ ["🔴", "🔴", "🔴", "🔴", "", "", "", ""] --> true
- 
+    - ✅ horizontal victory in the middle row for player 2 --> true
+    - ✅ ["🔴", "🔴", "🟡", "🔴", "🔴", "", "", ""] --> false
+
+ ## Component
+ - ✅ Player 1 drops his disc, horizontal victory --> "Player 1 wins!" in console

@@ -1,5 +1,5 @@
 import { newBoard, player1,player2, dropDisc, checkForHorizontalVictory } from "../../src/connect4";
-import { emptyConnect4GameBoard, gameBoardAlmostHorizontalVictoryOnBottomRow, gameBoardHorizontalVictoryOnBottomRow, gameBoardInProgress, gameBoardThirdColumnFull } from "../doubles/double";
+import { emptyConnect4GameBoard, gameBoardAlmostHorizontalVictoryOnBottomRow, gameBoardFourRedDiscsButNotConsecutive, gameBoardHorizontalVictoryForPlayerTwoMiddleRow, gameBoardHorizontalVictoryOnBottomRow, gameBoardInProgress, gameBoardThirdColumnFull } from "../doubles/double";
 
 describe("Connect4 is a game which is played on a board", () => {
   describe("When we set up the game, the game..", () => {
@@ -59,9 +59,19 @@ describe("Connect4 is a game which is played on a board", () => {
         const currentPlayer = player1;
         expect(checkForHorizontalVictory(board, currentPlayer)).toBe(false);
       });
+      it("When there are 4 red discs in a row, but not consecutive, there is no horizontal victory", () => {
+        const board = gameBoardFourRedDiscsButNotConsecutive;
+        const currentPlayer = player1;
+        expect(checkForHorizontalVictory(board, currentPlayer)).toBe(false);
+      });
       it("When there are 4 discs in a row for player 1, there is a horizontal victory", () => {
         const board = gameBoardHorizontalVictoryOnBottomRow;
         const currentPlayer = player1;
+        expect(checkForHorizontalVictory(board, currentPlayer)).toBe(true);
+      });
+      it("When there are 4 discs in a row for player 2, there is a horizontal victory", () => {
+        const board = gameBoardHorizontalVictoryForPlayerTwoMiddleRow;
+        const currentPlayer = player2;
         expect(checkForHorizontalVictory(board, currentPlayer)).toBe(true);
       });
     });

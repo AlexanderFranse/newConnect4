@@ -22,12 +22,16 @@ export function dropDisc(board: Board, player: Cell, column: number): Board {
   throw new Error("Column full!");
 }
 
-export function checkForHorizontalVictory(board: Board, currentPlayer: Cell): boolean {
-  for (let row of board) {
+export function checkForHorizontalVictory(
+  board: Board,
+  currentPlayer: Cell
+): boolean {
+  for (let row = 0; row < board.length; row += 1) {
     let count = 0;
-    for (let cell of row) {
+    for (let col = 0; col < board[row].length; col += 1) {
+      const cell = board[row][col];
       if (cell === currentPlayer && cell !== "") {
-        count++;
+        count += 1;
         if (count === 4) {
           return true;
         }
@@ -37,4 +41,11 @@ export function checkForHorizontalVictory(board: Board, currentPlayer: Cell): bo
     }
   }
   return false;
+}
+
+export function makeMove(board: Board, currentPlayer: Cell, column: number) {
+  const updatedBoard = dropDisc(board, currentPlayer, column);
+  if (checkForHorizontalVictory(updatedBoard, currentPlayer)) {
+    console.log("Player 1 wins!");
+  }
 }

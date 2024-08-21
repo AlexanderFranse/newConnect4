@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { loadFeature, defineFeature } from "jest-cucumber";
-import { newBoard, dropDisc, player1, player2 } from "../../src/connect4";
+import { newBoard, dropDisc, player1, player2, makeMove } from "../../src/connect4";
 
 const feature = loadFeature("./cucumber/features/connect4.feature");
 
@@ -58,7 +58,8 @@ defineFeature(feature, (test) => {
 
     when("player 1 puts his disc in the fourth column", () => {
       const fourthColumn = 3;
-      dropDisc(board, player1, fourthColumn);
+      makeMove(board, player1, fourthColumn);
+      console.log(board);
     });
 
     then("a message is printed which says Player 1 won!", () => {
