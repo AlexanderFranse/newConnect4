@@ -47,5 +47,7 @@ export function makeMove(board: Board, currentPlayer: Cell, column: number) {
   const updatedBoard = dropDisc(board, currentPlayer, column);
   if (checkForHorizontalVictory(updatedBoard, currentPlayer)) {
     console.log("Player 1 wins!");
+    return updatedBoard;
   }
+  return updatedBoard;
 }

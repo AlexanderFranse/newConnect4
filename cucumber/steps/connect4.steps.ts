@@ -15,7 +15,7 @@ defineFeature(feature, (test) => {
     when,
     then,
   }) => {
-    const board = newBoard();
+    let board = newBoard();
     given("a board with 7 columns", () => {});
 
     and("player 1 plays with the red disc", () => {
@@ -28,42 +28,41 @@ defineFeature(feature, (test) => {
 
     and("player 1 puts his disc in the first column", () => {
       const firstColumn = 0;
-      dropDisc(board, player1, firstColumn);
+      board = dropDisc(board, player1, firstColumn);
     });
 
     and("player 2 puts his disc in the first column", () => {
       const firstColumn = 0;
-      dropDisc(board, player2, firstColumn);
+      board = dropDisc(board, player2, firstColumn);
     });
 
     and("player 1 puts his disc in the second column", () => {
       const secondColumn = 1;
-      dropDisc(board, player1, secondColumn);
+      board = dropDisc(board, player1, secondColumn);
     });
 
     and("player 2 puts his disc in the second column", () => {
       const secondColumn = 1;
-      dropDisc(board, player2, secondColumn);
+      board = dropDisc(board, player2, secondColumn);
     });
 
     and("player 1 puts his disc in the third column", () => {
       const thirdColumn = 2;
-      dropDisc(board, player1, thirdColumn);
+      board = dropDisc(board, player1, thirdColumn);
     });
 
     and("player 2 puts his disc in the third column", () => {
       const thirdColumn = 2;
-      dropDisc(board, player2, thirdColumn);
+      board = dropDisc(board, player2, thirdColumn);
     });
 
     when("player 1 puts his disc in the fourth column", () => {
       const fourthColumn = 3;
-      makeMove(board, player1, fourthColumn);
-      console.log(board);
+      board = makeMove(board, player1, fourthColumn);
     });
 
     then("a message is printed which says Player 1 won!", () => {
-      expect(mockLog).toHaveBeenCalledWith("Player 1 won!");
+      expect(mockLog).toHaveBeenCalledWith("Player 1 wins!");
     });
   });
 });
