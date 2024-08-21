@@ -42,7 +42,7 @@ Drop disc
     ✅ Player 1, 3rd column that already contains 3 discs --> dropped correctly
     ✅ Player 1, 3rd column that already contains 7 discs --> error
 Check for horizontal victory
-    - ["", "", "", "", "", "", "", ""] --> false
-    - ["🔴", "🔴", "🔴", "", "", "", "", ""] --> false
-    - ["🔴", "🔴", "🔴", "🔴", "", "", "", ""] --> true
+    - ✅ ["", "", "", "", "", "", "", ""] --> false
+    - ✅ ["🔴", "🔴", "🔴", "", "", "", "", ""] --> false
+    - ✅ ["🔴", "🔴", "🔴", "🔴", "", "", "", ""] --> true
  

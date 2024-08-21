@@ -26,3 +26,21 @@ export const gameBoardThirdColumnFull: Board = [
   [player2, player1, player1, player2, player1, player2, player1],
   [player1, player2, player2, player1, player2, player1, player2],
 ];
+
+export const gameBoardAlmostHorizontalVictoryOnBottomRow: Board = [
+  ["", "", "", "", "", "", ""],
+  ["", "", "", "", "", "", ""],
+  ["", "", "", "", "", "", ""],
+  ["", "", player2, "", "", "", ""],
+  ["", "", player2, "", "", "", ""],
+  [player1, player1, player1, "", "", player2, ""],
+];
+
+export const gameBoardHorizontalVictoryOnBottomRow: Board = [
+  ["", "", "", "", "", "", ""],
+  ["", "", "", "", "", "", ""],
+  ["", "", player2, "", "", "", ""],
+  ["", "", player2, "", "", "", ""],
+  ["", "", player2, "", "", "", ""],
+  [player1, player1, player1, player1, "", player2, ""],
+];

@@ -21,3 +21,20 @@ export function dropDisc(board: Board, player: Cell, column: number): Board {
   }
   throw new Error("Column full!");
 }
+
+export function checkForHorizontalVictory(board: Board, currentPlayer: Cell): boolean {
+  for (let row of board) {
+    let count = 0;
+    for (let cell of row) {
+      if (cell === currentPlayer && cell !== "") {
+        count++;
+        if (count === 4) {
+          return true;
+        }
+      } else {
+        count = 0;
+      }
+    }
+  }
+  return false;
+}
