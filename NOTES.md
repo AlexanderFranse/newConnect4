@@ -51,3 +51,6 @@ Check for horizontal victory
 
  ## Component
  - ✅ Player 1 drops his disc, horizontal victory --> "Player 1 wins!" in console
+
+ 🤲 Rerwrite E2E scenario, focussing on how we want the game to be played
+ 🤲 Writing OpenAPI spec

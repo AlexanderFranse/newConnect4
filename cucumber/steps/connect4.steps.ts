@@ -9,60 +9,13 @@ const mockLog = jest.fn();
 console.log = mockLog;
 
 defineFeature(feature, (test) => {
-  test("player 1 won with a horizontal victory!", ({
-    given,
-    and,
-    when,
-    then,
-  }) => {
-    let board = newBoard();
-    given("a board with 7 columns", () => {});
-
-    and("player 1 plays with the red disc", () => {
-      expect(player1).toBe("🔴");
+  test('user wants to play a game against a bot', ({ when, then }) => {
+    when('the API is invoked to start a new game', () => {
+        //Assert the GET request is triggered
     });
 
-    and("player 2 plays with the yellow disc", () => {
-      expect(player2).toBe("🟡");
+    then('an empty game board is returned', () => {
+        //Assert the response is an empty board
     });
-
-    and("player 1 puts his disc in the first column", () => {
-      const firstColumn = 0;
-      board = dropDisc(board, player1, firstColumn);
-    });
-
-    and("player 2 puts his disc in the first column", () => {
-      const firstColumn = 0;
-      board = dropDisc(board, player2, firstColumn);
-    });
-
-    and("player 1 puts his disc in the second column", () => {
-      const secondColumn = 1;
-      board = dropDisc(board, player1, secondColumn);
-    });
-
-    and("player 2 puts his disc in the second column", () => {
-      const secondColumn = 1;
-      board = dropDisc(board, player2, secondColumn);
-    });
-
-    and("player 1 puts his disc in the third column", () => {
-      const thirdColumn = 2;
-      board = dropDisc(board, player1, thirdColumn);
-    });
-
-    and("player 2 puts his disc in the third column", () => {
-      const thirdColumn = 2;
-      board = dropDisc(board, player2, thirdColumn);
-    });
-
-    when("player 1 puts his disc in the fourth column", () => {
-      const fourthColumn = 3;
-      board = makeMove(board, player1, fourthColumn);
-    });
-
-    then("a message is printed which says Player 1 won!", () => {
-      expect(mockLog).toHaveBeenCalledWith("Player 1 wins!");
-    });
-  });
+});
 });

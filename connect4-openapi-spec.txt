@@ -1,0 +1,48 @@
+openapi: 3.0.0
+info:
+  title: Connect4 Game API
+  version: 1.0.0
+  description: API for playing Connect4 against a bot
+
+paths:
+  /game/new:
+    get:
+      summary: Start a new Connect4 game
+      description: Initializes a new game and returns an empty board
+      operationId: startNewGame
+      responses:
+        '200':
+          description: Successful response with a new game board
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GameState'
+
+components:
+  schemas:
+    GameState:
+      type: object
+      properties:
+        board:
+          type: array
+          description: 2D array representing the game board, using emoji
+          items:
+            type: array
+            items:
+              type: string
+              enum: ['⚫']
+          example: [
+            ['⚫', '⚫', '⚫', '⚫', '⚫', '⚫', '⚫'],
+            ['⚫', '⚫', '⚫', '⚫', '⚫', '⚫', '⚫'],
+            ['⚫', '⚫', '⚫', '⚫', '⚫', '⚫', '⚫'],
+            ['⚫', '⚫', '⚫', '⚫', '⚫', '⚫', '⚫'],
+            ['⚫', '⚫', '⚫', '⚫', '⚫', '⚫', '⚫'],
+            ['⚫', '⚫', '⚫', '⚫', '⚫', '⚫', '⚫']
+          ]
+        gameId:
+          type: string
+          description: Unique identifier for the game
+          example: "game-123456"
+      required:
+        - board
+        - gameId
