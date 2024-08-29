@@ -52,5 +52,12 @@ Check for horizontal victory
  ## Component
  - ✅ Player 1 drops his disc, horizontal victory --> "Player 1 wins!" in console
 
- 🤲 Rerwrite E2E scenario, focussing on how we want the game to be played
- 🤲 Writing OpenAPI spec
+ ✅ Rerwrite E2E scenario, focussing on how we want the game to be played
+ ✅ Writing OpenAPI spec
+ 🇦🇿 Create a component: start a new game
+    - Create an empty board
+        -- 🇿🇼 Already exists, but should return 0 as cell value
+    - Create a game id
+
+## Backlog
+Think about adding a submodule with the API contract and contract testing functionality (maybe check the full stack cookiecutter)

@@ -1,7 +1,9 @@
 /* eslint-disable no-console */
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { loadFeature, defineFeature } from "jest-cucumber";
-import { newBoard, dropDisc, player1, player2, makeMove } from "../../src/connect4";
+// eslint-disable-next-line import/no-extraneous-dependencies
+import request from "supertest";
+import app from "../../src/api";
 
 const feature = loadFeature("./cucumber/features/connect4.feature");
 
@@ -9,13 +11,24 @@ const mockLog = jest.fn();
 console.log = mockLog;
 
 defineFeature(feature, (test) => {
-  test('user wants to play a game against a bot', ({ when, then }) => {
-    when('the API is invoked to start a new game', () => {
-        //Assert the GET request is triggered
+  test("user wants to start a new game", ({ when, then }) => {
+    let response: request.Response;
+
+    when("the API is invoked to start a new game", async () => {
+      response = await request(app).get("/game/new");
+      expect(response.status).toBe(200);
     });
 
-    then('an empty game board is returned', () => {
-        //Assert the response is an empty board
+    then("an empty game board is returned", () => {
+      const emptyBoard = [
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+      ];
+      expect(response.body).toEqual(emptyBoard);
     });
-});
+  });
 });

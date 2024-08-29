@@ -1,12 +1,19 @@
+import exp from "constants";
 import { newBoard, player1,player2, dropDisc, checkForHorizontalVictory } from "../../src/connect4";
 import { emptyConnect4GameBoard, gameBoardAlmostHorizontalVictoryOnBottomRow, gameBoardFourRedDiscsButNotConsecutive, gameBoardHorizontalVictoryForPlayerTwoMiddleRow, gameBoardHorizontalVictoryOnBottomRow, gameBoardInProgress, gameBoardThirdColumnFull } from "../doubles/double";
 
 describe("Connect4 is a game which is played on a board", () => {
   describe("When we set up the game, the game..", () => {
-    it("should have 7 columns and 6 rows", () => {
+    it("should have 7 columns and 6 rows, filled with zeroes", () => {
       const board = newBoard();
       expect(board.length).toEqual(6);
       expect(board[0].length).toEqual(7);
+      // assert all the cells in the game board for a zero
+      board.forEach((row) => {
+        row.forEach((cell) => {
+          expect(cell).toEqual(0);
+        });
+      });
     });
     it("should have player 1 play with the red disc", () => {
       expect(player1).toEqual("🔴");

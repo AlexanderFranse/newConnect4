@@ -1,5 +1,5 @@
 Feature: Connect4
 
-Scenario: user wants to play a game against a bot
+Scenario: user wants to start a new game
 	When the API is invoked to start a new game
 	Then an empty game board is returned

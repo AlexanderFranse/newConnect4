@@ -1,4 +1,4 @@
-export type Cell = "" | "🔴" | "🟡";
+export type Cell = 0 | 1 | 2;
 export type Board = Cell[][];
 export const player1 = "🔴";
 export const player2 = "🟡";
@@ -8,7 +8,7 @@ export function newBoard(): Board {
   const cols = 7;
   return Array(rows)
     .fill(null)
-    .map(() => Array(cols).fill(""));
+    .map(() => Array(cols).fill(0));
 }
 
 export function dropDisc(board: Board, player: Cell, column: number): Board {
@@ -50,4 +50,8 @@ export function makeMove(board: Board, currentPlayer: Cell, column: number) {
     return updatedBoard;
   }
   return updatedBoard;
+}
+
+export function startNewGame(): { board: Board; gameId: string | undefined } {
+  return { board: newBoard(), gameId: undefined };
 }
