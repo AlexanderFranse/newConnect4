@@ -27,4 +27,26 @@ defineFeature(feature, (test) => {
       expect(response.body).toHaveProperty("gameId");
     });
   });
+
+  test("user and bot makes a move", ({ given, when, then, and }) => {
+    let response: request.Response;
+    given("a new game was started", async () => {
+      response = await request(app).get("/game/new");
+      expect(response.status).toBe(200);
+    });
+    when("the API is invoked to drop a disc in the first column", async () => {
+      response = await request(app).post("/game/dropDisc").send({
+        gameId: response.body.gameId,
+        column: 0,
+      });
+      expect(response.status).toBe(200);
+    });
+    then("the API returns the board with a disc in the first column", () => {
+      // Code to assert that the disc is placed in the first column
+    });
+    and("a disc played by the bot in a column", () => {
+      // Code to simulate bot placing disc in a column
+    });
+  });
+
 });
