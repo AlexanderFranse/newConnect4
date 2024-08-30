@@ -1,11 +1,12 @@
 import express from "express";
+import { newGameId, startNewGame } from "./connect4";
 
 const app = express();
 const port = 3000;
 
 app.get("/game/new", (req, res) => {
-  const emptyBoard = "hello world";
-  res.json({ board: emptyBoard });
+  const newGame = startNewGame();
+  res.json({ board: newGame.board, gameId: newGameId() });
 });
 
 app.listen(port, () => {

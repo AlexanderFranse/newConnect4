@@ -54,10 +54,15 @@ Check for horizontal victory
 
  ✅ Rerwrite E2E scenario, focussing on how we want the game to be played
  ✅ Writing OpenAPI spec
- 🇦🇿 Create a component: start a new game
+ ✅ Create a component: start a new game
     - Create an empty board
-        -- 🇿🇼 Already exists, but should return 0 as cell value
+        -- ✅ Already exists, but should return 0 as cell value
     - Create a game id
+        -- ✅ Create new gameId, represented by UUID
+
+🙏 Add new E2E test
+
+
 
 ## Backlog
 Think about adding a submodule with the API contract and contract testing functionality (maybe check the full stack cookiecutter)

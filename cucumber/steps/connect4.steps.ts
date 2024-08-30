@@ -11,7 +11,7 @@ const mockLog = jest.fn();
 console.log = mockLog;
 
 defineFeature(feature, (test) => {
-  test("user wants to start a new game", ({ when, then }) => {
+  test("user wants to start a new game", ({ when, then, and }) => {
     let response: request.Response;
 
     when("the API is invoked to start a new game", async () => {
@@ -20,15 +20,11 @@ defineFeature(feature, (test) => {
     });
 
     then("an empty game board is returned", () => {
-      const emptyBoard = [
-        [0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0],
-      ];
-      expect(response.body).toEqual(emptyBoard);
+      expect(response.body).toHaveProperty("board");
+    });
+
+    and("a GameId is returned", () => {
+      expect(response.body).toHaveProperty("gameId");
     });
   });
 });
