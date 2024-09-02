@@ -4,6 +4,7 @@ import { loadFeature, defineFeature } from "jest-cucumber";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import request from "supertest";
 import app from "../../src/api";
+import { newBoard } from "../../src/connect4";
 
 const feature = loadFeature("./cucumber/features/connect4.feature");
 
@@ -42,10 +43,11 @@ defineFeature(feature, (test) => {
       expect(response.status).toBe(200);
     });
     then("the API returns the board with a disc in the first column", () => {
-      // Code to assert that the disc is placed in the first column
+     expect(response.body).toHaveProperty("board")
+     expect(response.body.board[0]).toContain(1)
     });
     and("a disc played by the bot in a column", () => {
-      // Code to simulate bot placing disc in a column
+     expect(response.body.board).toContain(2)
     });
   });
 

@@ -20,6 +20,17 @@ describe("Connect4 is a game which is played on a board", () => {
       expect(typeof gameId).toEqual("string");
     });
   });
+  describe("When a player1 drops a disc in X column",()=>{
+    it("Given the X column has avivalbe spcase for a new disc then the disc will be dropped in the x column ",()=>{
+
+    });
+    it("Given the X column has no avivalbe spcase for a new disc then show column full! message",()=>{
+
+    });
+    it("Given the X column in out of bounderies then show out of bounderies! message",()=>{
+
+    });
+  });
 });
 //     it("should have player 1 play with the red disc", () => {
 //       expect(player1).toEqual("🔴");

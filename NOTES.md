@@ -60,6 +60,11 @@ Check for horizontal victory
     - Create a game id
         -- ✅ Create new gameId, represented by UUID
 
+     Creat a component: user dropDisc in X column 
+       -- 🙏 return board with the updated disc
+       -- 🙏 Write a component test
+       -- 🙏 Write unit tests
+
 🙏 Add new E2E test
 
 

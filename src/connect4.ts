@@ -19,6 +19,10 @@ export function startNewGame(): { board: Board; gameId: string | undefined } {
   return { board: newBoard(), gameId: newGameId() };
 }
 
+export function dropDisc(gameId:string, column: number): Board{
+return newBoard();
+}
+
 // export function dropDisc(board: Board, player: Cell, column: number): Board {
 //   const boardCopy = board.map((row) => [...row]);
 //   for (let row = boardCopy.length - 1; row >= 0; row -= 1) {
