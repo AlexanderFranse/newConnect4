@@ -19,8 +19,8 @@ export function startNewGame(): { board: Board; gameId: string | undefined } {
   return { board: newBoard(), gameId: newGameId() };
 }
 
-export function dropDisc(gameId:string, column: number): Board{
-return newBoard();
+export function dropDisc(board: Board, column: number): Board {
+  return board;
 }
 
 // export function dropDisc(board: Board, player: Cell, column: number): Board {
