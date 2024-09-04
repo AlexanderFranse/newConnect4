@@ -20,7 +20,14 @@ export function startNewGame(): { board: Board; gameId: string | undefined } {
 }
 
 export function dropDisc(board: Board, column: number): Board {
-  return board;
+  const updatedBoard = board;
+  for (let i = board.length - 1; i >= 0; i -= 1) {
+    if (board[i][column] === 0) {
+      updatedBoard[i][column] = 1;
+      break;
+    }
+  }
+  return updatedBoard;
 }
 
 export function isValidColumn(column: number): boolean {

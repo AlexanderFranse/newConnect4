@@ -63,10 +63,16 @@ Check for horizontal victory
      Creat a component: user dropDisc in X column 
      - ✅ Create unit for validating if a column exists
         -- ✅ column 7 --> false
-        -- ✅scolumn 0 --> true
-       -- 🙏 return board with the updated disc
-       -- 🙏 Write a component test
-       -- 🙏 Write unit tests
+        -- ✅ column 0 --> true
+    - ✅ Create unit for dropping a disc in a column
+        -- ✅ column 0 --> board with the updated disc
+        -- ✅ last column --> board with the updated disc
+        -- ✅ column with 3 discs --> new disc falls on top
+    - Create unit for checking if a column is full
+        -- empty column --> false
+        -- almost full --> false
+        -- full --> true
+
 
 🙏 Add new E2E test
 

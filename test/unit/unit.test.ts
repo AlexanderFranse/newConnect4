@@ -1,4 +1,5 @@
-import { isValidColumn, newBoard, newGameId } from "../../src/connect4";
+import { dropDisc, isValidColumn, newBoard, newGameId } from "../../src/connect4";
+import { gameBoardInProgress } from "../doubles/double";
 
 describe("Connect4 is a game which is played on a board", () => {
   describe("When we set up the game, the game..", () => {
@@ -28,6 +29,29 @@ describe("Connect4 is a game which is played on a board", () => {
       it("should return true if the column exists", () => {
         const column = 0;
         expect(isValidColumn(column)).toBe(true);
+      });
+    });
+    describe("Dropping a disc...", () => {
+      it("in the first column should return the updated board", () => {
+        const board = newBoard();
+        const column = 0;
+        const updatedBoard = dropDisc(board, column);
+        expect(updatedBoard).toBeDefined();
+        expect(updatedBoard[5][0]).toEqual(1);
+      });
+      it("in the last column should return the updated board", () => {
+        const board = newBoard();
+        const column = 6;
+        const updatedBoard = dropDisc(board, column);
+        expect(updatedBoard).toBeDefined();
+        expect(updatedBoard[5][6]).toEqual(1);
+      });
+      it("in a column that already contains 3 discs should show the disc falling on top of the previous disc", () => {
+        const board = gameBoardInProgress;
+        const column = 0;
+        const updatedBoard = dropDisc(board, column);
+        expect(updatedBoard).toBeDefined();
+        expect(updatedBoard[2][0]).toEqual(1);
       });
     });
   });
