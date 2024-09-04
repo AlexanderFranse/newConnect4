@@ -61,6 +61,9 @@ Check for horizontal victory
         -- ✅ Create new gameId, represented by UUID
 
      Creat a component: user dropDisc in X column 
+     - ✅ Create unit for validating if a column exists
+        -- ✅ column 7 --> false
+        -- ✅scolumn 0 --> true
        -- 🙏 return board with the updated disc
        -- 🙏 Write a component test
        -- 🙏 Write unit tests

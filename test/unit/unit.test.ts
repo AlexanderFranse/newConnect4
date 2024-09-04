@@ -1,4 +1,4 @@
-import { newBoard, newGameId } from "../../src/connect4";
+import { isValidColumn, newBoard, newGameId } from "../../src/connect4";
 
 describe("Connect4 is a game which is played on a board", () => {
   describe("When we set up the game, the game..", () => {
@@ -18,9 +18,17 @@ describe("Connect4 is a game which is played on a board", () => {
       expect(typeof gameId).toEqual("string");
     });
   });
-  describe("When a player1 drops a disc in X column", () => {
-    it("Given the X column has avivalbe spcase for a new disc then the disc will be dropped in the x column ", () => {});
-    it("Given the X column has no avivalbe spcase for a new disc then show column full! message", () => {});
-    it("Given the X column in out of bounderies then show out of bounderies! message", () => {});
+  describe("One of the main features is dropping a disc in a column", () => {
+    describe("You have to drop a disc in an existing column", () => {
+      it("should throw an error if the column does not exist", () => {
+        const column = 7;
+
+        expect(isValidColumn(column)).toBe(false);
+      });
+      it("should return true if the column exists", () => {
+        const column = 0;
+        expect(isValidColumn(column)).toBe(true);
+      });
+    });
   });
 });
