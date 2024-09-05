@@ -1,5 +1,5 @@
-import { dropDisc, isValidColumn, newBoard, newGameId } from "../../src/connect4";
-import { gameBoardInProgress } from "../doubles/double";
+import { dropDisc, isColumnFull, isValidColumn, newBoard, newGameId } from "../../src/connect4";
+import { gameBoardInProgress, gameBoardThirdColumnFull } from "../doubles/double";
 
 describe("Connect4 is a game which is played on a board", () => {
   describe("When we set up the game, the game..", () => {
@@ -30,6 +30,23 @@ describe("Connect4 is a game which is played on a board", () => {
         const column = 0;
         expect(isValidColumn(column)).toBe(true);
       });
+    });
+    describe("You have to drop a disc in a column that is not yet full. We check if it is", () => {
+        it("empty", () => {
+          const board = newBoard();
+          const column = 0;
+          expect(isColumnFull(board, column)).toBe(false);
+        });
+        it("not full", () => {
+          const board = gameBoardInProgress;
+          const column = 0;
+          expect(isColumnFull(board, column)).toBe(false);
+        });
+        it("full", () => {
+          const board = gameBoardThirdColumnFull;
+          const column = 2;
+          expect(isColumnFull(board, column)).toBe(true);
+        });
     });
     describe("Dropping a disc...", () => {
       it("in the first column should return the updated board", () => {

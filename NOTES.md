@@ -52,6 +52,8 @@ Check for horizontal victory
  ## Component
  - ✅ Player 1 drops his disc, horizontal victory --> "Player 1 wins!" in console
 
+---------------------------------
+
  ✅ Rerwrite E2E scenario, focussing on how we want the game to be played
  ✅ Writing OpenAPI spec
  ✅ Create a component: start a new game
@@ -68,13 +70,10 @@ Check for horizontal victory
         -- ✅ column 0 --> board with the updated disc
         -- ✅ last column --> board with the updated disc
         -- ✅ column with 3 discs --> new disc falls on top
-    - Create unit for checking if a column is full
-        -- empty column --> false
-        -- almost full --> false
-        -- full --> true
-
-
-🙏 Add new E2E test
+    - ✅ Create unit for checking if a column is full
+        -- ✅ empty column --> false
+        -- ✅ almost full --> false
+        -- ✅ full --> true
 
 
 

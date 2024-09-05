@@ -33,3 +33,7 @@ export function dropDisc(board: Board, column: number): Board {
 export function isValidColumn(column: number): boolean {
   return column >= 0 && column < 7;
 }
+
+export function isColumnFull(board: Board, column: number): boolean {
+  return board[0][column] !== 0;
+}
