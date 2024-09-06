@@ -74,8 +74,8 @@ Check for horizontal victory
         -- ✅ empty column --> false
         -- ✅ almost full --> false
         -- ✅ full --> true
-
-
+    - Implment the drop disc API
+    - Double check the dropdisc function implemented corectly 
 
 ## Backlog
 Think about adding a submodule with the API contract and contract testing functionality (maybe check the full stack cookiecutter)
