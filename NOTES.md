@@ -74,9 +74,10 @@ Check for horizontal victory
         -- ✅ empty column --> false
         -- ✅ almost full --> false
         -- ✅ full --> true
-    - 🍅 Implement the drop disc API
+    - ✅ Implement the drop disc API
     - ✅ Adjusting the e2e test to support POST'ing with a board
     - ✅ Update open api spec with post call
+    - 🍅 Update dropDisc component to makeMove
     - Double check the dropdisc function implemented corectly 
 
     POST
