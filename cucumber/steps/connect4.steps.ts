@@ -37,6 +37,7 @@ defineFeature(feature, (test) => {
     });
     when("the API is invoked to drop a disc in the first column", async () => {
       response = await request(app).post("/game/dropDisc").send({
+        gameId: response.body.gameId,
         board: response.body.board,
         column: 0,
       });

@@ -18,6 +18,26 @@ paths:
               schema:
                 $ref: '#/components/schemas/GameState'
 
+  /game/dropDisc:
+    post:
+      summary: Make a move by dropping a disc in the Connect4 game
+      description: Allows a player to make a move in the game
+      operationId: dropDisc
+      requestBody:
+        description: Information required to make a move
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DropDisc'
+      responses:
+        '200':
+          description: Successful response with the updated game board
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GameState'
+
 components:
   schemas:
     GameState:
@@ -30,7 +50,6 @@ components:
             type: array
             items:
               type: number
-              enum: [0]
           example: [
             [0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0],
@@ -46,3 +65,34 @@ components:
       required:
         - board
         - gameId
+
+    DropDisc:
+      type: object
+      properties:
+        gameId:
+          type: string
+          description: Unique identifier for the game
+          example: "game-123456"
+        board:
+          type: array
+          description: Current state of the game board
+          items:
+            type: array
+            items:
+              type: number
+          example: [
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0]
+          ]
+        column:
+          type: number
+          description: Column where the player wants to drop their piece
+          enum: [0, 1, 2, 3, 4, 5, 6]
+      required:
+        - gameId
+        - board
+        - column

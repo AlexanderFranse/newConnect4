@@ -74,8 +74,16 @@ Check for horizontal victory
         -- ✅ empty column --> false
         -- ✅ almost full --> false
         -- ✅ full --> true
-    - Implment the drop disc API
+    - 🍅 Implement the drop disc API
+    - ✅ Adjusting the e2e test to support POST'ing with a board
+    - ✅ Update open api spec with post call
     - Double check the dropdisc function implemented corectly 
+
+    POST
+        -- GameId
+        -- Column
+        -- Board
 
 ## Backlog
 Think about adding a submodule with the API contract and contract testing functionality (maybe check the full stack cookiecutter)
+Maybe we can add a "move history" to the API.

@@ -37,3 +37,7 @@ export function isValidColumn(column: number): boolean {
 export function isColumnFull(board: Board, column: number): boolean {
   return board[0][column] !== 0;
 }
+
+export function makeMove(gameId: string, board: Board, column: number) {
+  return 'hello world';
+}

@@ -10,9 +10,21 @@ app.get("/game/new", (req, res) => {
 });
 
 app.post("/game/dropDisc", (req, res) => {
-  const { board, column} = req.body;
-  const updatedBoard = dropDisc(board, column);
-  res.json({ board: updatedBoard});
+  const { gameId, board, column } = req.body;
+
+  // Validate request body
+  if (!gameId || !board || column === undefined || column < 0 || column > 6) {
+    return res.status(400).json({ error: "Invalid request data" });
+  }
+
+  try {
+    const updatedGame = dropDisc(gameId, board, column);
+    res.json(updatedGame);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "An error occurred while dropping the disc" });
+  }
 });
 
 app.listen(port, () => {
