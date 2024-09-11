@@ -15,7 +15,7 @@ export const newGameId = (): string => {
   return Math.random().toString(36).substring(2, 15);
 }
 
-export function startNewGame(): { board: Board; gameId: string | undefined } {
+export function startNewGame(): { board: Board; gameId: string } {
   return { board: newBoard(), gameId: newGameId() };
 }
 
@@ -38,6 +38,9 @@ export function isColumnFull(board: Board, column: number): boolean {
   return board[0][column] !== 0;
 }
 
-export function makeMove(gameId: string, board: Board, column: number) {
-  return 'hello world';
+export function makeMove(board: Board, column: number): Board{
+  // dropDisc
+  // check the victory case
+  // if not turn player
+ return dropDisc(board, column);
 }

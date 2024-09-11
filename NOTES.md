@@ -77,7 +77,9 @@ Check for horizontal victory
     - ✅ Implement the drop disc API
     - ✅ Adjusting the e2e test to support POST'ing with a board
     - ✅ Update open api spec with post call
-    - 🍅 Update dropDisc component to makeMove
+    - ✅ Update dropDisc component to makeMove
+    - ✅ Update dropDisc unit tests to take 2 params
+    - 🍅 Review the second scenario
     - Double check the dropdisc function implemented corectly 
 
     POST

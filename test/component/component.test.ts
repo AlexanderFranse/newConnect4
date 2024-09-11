@@ -9,12 +9,10 @@ describe("It should be possible to start a new game", () => {
   });
 });
 describe("An other feature is dropping a disc in a column and making your move", () => {
-  it("A player should be able to drop his disc in a column, triggering a bot move afterwards, returning the current game state including the ID", () => {
+  it("A player should be able to drop his disc in a column, returning the current game state including the ID", () => {
     const newGame = startNewGame();
     const column = 0;
-    const updatedGameState = makeMove(newGame.gameId, newGame.board, column);
-    expect(updatedGameState).toBeDefined();
-    expect(updatedGameState.gameId).toEqual(newGame.gameId);
-    expect(updatedGameState.board).toBeDefined();
+    const updatedGameBoard = makeMove(newGame.board, column);
+    expect(updatedGameBoard).toBeDefined();
   });
 });
