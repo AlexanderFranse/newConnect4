@@ -1,3 +1,4 @@
+import { describe } from "node:test";
 import { dropDisc, isColumnFull, isValidColumn, newBoard, newGameId } from "../../src/connect4";
 import { gameBoardInProgress, gameBoardThirdColumnFull } from "../doubles/double";
 
@@ -69,6 +70,15 @@ describe("Connect4 is a game which is played on a board", () => {
         const updatedBoard = dropDisc(board, column);
         expect(updatedBoard).toBeDefined();
         expect(updatedBoard[2][0]).toEqual(1);
+      });
+    });
+    describe("A bot should be able to make a move", () => {
+
+describe("It should pick a random column between 0 and 6", () => {
+      it("between 0 and 6 is a good idea", () => {
+        const columnForBotToDropDisc = columnForBotToDropDisc();
+        expect(columnForBotToDropDisc).toBeGreaterThanOrEqual(0);
+        expect(columnForBotToDropDisc).toBeLessThanOrEqual(6);
       });
     });
   });

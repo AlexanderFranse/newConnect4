@@ -18,7 +18,7 @@ app.post("/game/dropDisc", (req, res) => {
   }
 
   try {
-    const updatedGame = dropDisc(gameId, board, column);
+    const updatedGame = dropDisc(board, column);
     res.json(updatedGame);
   } catch (error) {
     res
