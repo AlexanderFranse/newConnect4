@@ -19,11 +19,12 @@ export function startNewGame(): { board: Board; gameId: string } {
   return { board: newBoard(), gameId: newGameId() };
 }
 
-export function dropDisc(board: Board, column: number): Board {
+export function dropDisc(board: Board, column: number, disc: number): Board {
+  const cell = disc === 1 ? player1 : player2;
   const updatedBoard = board;
   for (let i = board.length - 1; i >= 0; i -= 1) {
     if (board[i][column] === 0) {
-      updatedBoard[i][column] = 1;
+      updatedBoard[i][column] = cell;
       break;
     }
   }
@@ -43,4 +44,9 @@ export function makeMove(board: Board, column: number): Board{
   // check the victory case
   // if not turn player
  return dropDisc(board, column);
+}
+
+export function columnForBotToDropDisc(): number {
+  const allowedColumns = [0, 1, 2, 3, 4, 5, 6];
+  return allowedColumns[Math.floor(Math.random() * allowedColumns.length)];
 }

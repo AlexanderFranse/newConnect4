@@ -1,5 +1,4 @@
-import e from "express";
-import { dropDisc, makeMove, startNewGame } from "../../src/connect4";
+import { makeMove, startNewGame } from "../../src/connect4";
 
 describe("It should be possible to start a new game", () => {
   it("And when this is done, an empty game board and a game id should be returned", () => {
@@ -9,17 +8,14 @@ describe("It should be possible to start a new game", () => {
     expect(newGame.gameId).toBeDefined();
   });
 });
+
 describe("An other feature is making a move", () => {
-  it("This starts with a player by dropping his disc in a column, returning the current game state including the ID", () => {
+  it("Making a move entails dropping the users disc and executing a bot move.", () => {
     const newGame = startNewGame();
     const column = 0;
     const updatedGameBoard = makeMove(newGame.board, column);
     expect(updatedGameBoard).toBeDefined();
-  });
-  it("And after that a bot should make his move on the board", () => {
-    const newGame = startNewGame();
-    const column = 0;
-    const updatedGameBoard = makeMove(newGame.board, column);
-    expect(updatedGameBoard).toContain(2);
+    expect(updatedGameBoard.some((row) => row.includes(1))).toBe(true);
+    expect(updatedGameBoard.some((row) => row.includes(2))).toBe(true);
   });
 });

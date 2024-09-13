@@ -80,10 +80,20 @@ Check for horizontal victory
     - ✅ Update dropDisc component to makeMove
     - ✅ Update dropDisc unit tests to take 2 params
     - ✅ Review the second scenario
-    - 🙌 Add bot move in makeMove component function
-    - 🙌 Add unit for a bot to choose the column, should be between 0 and 6
-        - between 0 and 6 --> true
+    - ✅ Add bot move in makeMove component function
+    - Implement functionality for the bot move
+        - ✅ Add unit for a bot to choose the column, should be between 0 and 6
+            - ✅ between 0 and 6 --> true
+            - ✅ Refactor: use allowedColumns [0, 1, 2, 3, 4, 5, 6]
+        - Update dropDisc to make it possible to drop a 2
+            - 🍅 Drop a 2 in the 3rd column --> hurrah
+                -- Fix Type issue disc / cell
     - Double check the dropdisc function implemented corectly 
+
+MakeMove:
+- DropDisc from the user
+- DropDisc for the bot
+- Return updated game state
 
     POST
         -- GameId
