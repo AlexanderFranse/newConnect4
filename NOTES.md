@@ -86,8 +86,11 @@ Check for horizontal victory
             - ✅ between 0 and 6 --> true
             - ✅ Refactor: use allowedColumns [0, 1, 2, 3, 4, 5, 6]
         - Update dropDisc to make it possible to drop a 2
-            - 🍅 Drop a 2 in the 3rd column --> hurrah
-                -- Fix Type issue disc / cell
+            - ✅ Drop a 2 in the 3rd column --> hurrah
+                -- ✅ Fix Type issue disc / cell
+                -- ✅ Update unit tests and doubles
+                -- ✅ Update component test
+                -- 🍅 Make /dropDisc endpoint passes
     - Double check the dropdisc function implemented corectly 
 
 MakeMove:

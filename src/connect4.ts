@@ -1,14 +1,16 @@
-export type Cell = 0 | 1 | 2;
-export type Board = Cell[][];
 export const player1 = "🔴";
 export const player2 = "🟡";
+export const empty = "⚪️"
+export type Cell = typeof empty | typeof player1 | typeof player2;
+export type Board = Cell[][];
+
 
 export function newBoard(): Board {
   const rows = 6;
   const cols = 7;
   return Array(rows)
     .fill(null)
-    .map(() => Array(cols).fill(0));
+    .map(() => Array(cols).fill(empty));
 }
 
 export const newGameId = (): string => {
@@ -23,7 +25,7 @@ export function dropDisc(board: Board, column: number, disc: number): Board {
   const cell = disc === 1 ? player1 : player2;
   const updatedBoard = board;
   for (let i = board.length - 1; i >= 0; i -= 1) {
-    if (board[i][column] === 0) {
+    if (board[i][column] === empty) {
       updatedBoard[i][column] = cell;
       break;
     }
@@ -36,14 +38,19 @@ export function isValidColumn(column: number): boolean {
 }
 
 export function isColumnFull(board: Board, column: number): boolean {
-  return board[0][column] !== 0;
+  return board[0][column] !== empty;
 }
 
 export function makeMove(board: Board, column: number): Board{
   // dropDisc
   // check the victory case
   // if not turn player
- return dropDisc(board, column);
+  const player1 = 1
+  const player2 = 2
+ let updatedBoard = dropDisc(board, column, player1);
+ const botColumn= columnForBotToDropDisc()
+ return dropDisc(updatedBoard, botColumn, player2)
+
 }
 
 export function columnForBotToDropDisc(): number {

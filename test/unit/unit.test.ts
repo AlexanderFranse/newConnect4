@@ -20,7 +20,7 @@ describe("Connect4 is a game which is played on a board", () => {
       expect(board[0].length).toEqual(7);
       board.forEach((row) => {
         row.forEach((cell) => {
-          expect(cell).toEqual(0);
+          expect(cell).toEqual("⚪️");
         });
       });
     });
@@ -63,9 +63,10 @@ describe("Connect4 is a game which is played on a board", () => {
       it("in the first column should return the updated board", () => {
         const board = newBoard();
         const column = 0;
-        const updatedBoard = dropDisc(board, column);
+        const disc = 1
+        const updatedBoard = dropDisc(board, column, disc);
         expect(updatedBoard).toBeDefined();
-        expect(updatedBoard[5][0]).toEqual(1);
+        expect(updatedBoard[5][0]).toEqual("🔴");
       });
       it("in the last column should return the updated board", () => {
         const board = newBoard();
@@ -73,14 +74,15 @@ describe("Connect4 is a game which is played on a board", () => {
         const disc = 2;
         const updatedBoard = dropDisc(board, column, disc);
         expect(updatedBoard).toBeDefined();
-        expect(updatedBoard[5][6]).toEqual(disc);
+        expect(updatedBoard[5][6]).toEqual("🟡");
       });
       it("in a column that already contains 3 discs should show the disc falling on top of the previous disc", () => {
         const board = gameBoardInProgress;
         const column = 0;
-        const updatedBoard = dropDisc(board, column);
+        const disc= 2
+        const updatedBoard = dropDisc(board, column, disc);
         expect(updatedBoard).toBeDefined();
-        expect(updatedBoard[2][0]).toEqual(1);
+        expect(updatedBoard[2][0]).toEqual("🟡");
       });
     });
     describe("A bot should be able to make a move", () => {

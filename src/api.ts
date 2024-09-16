@@ -1,5 +1,5 @@
 import express from "express";
-import { dropDisc, newGameId, startNewGame } from "./connect4";
+import { dropDisc, makeMove, newGameId, startNewGame } from "./connect4";
 
 const app = express();
 const port = 3000;
@@ -18,7 +18,7 @@ app.post("/game/dropDisc", (req, res) => {
   }
 
   try {
-    const updatedGame = dropDisc(board, column);
+    const updatedGame = makeMove(board, column);
     res.json(updatedGame);
   } catch (error) {
     res

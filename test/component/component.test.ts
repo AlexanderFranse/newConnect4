@@ -15,7 +15,7 @@ describe("An other feature is making a move", () => {
     const column = 0;
     const updatedGameBoard = makeMove(newGame.board, column);
     expect(updatedGameBoard).toBeDefined();
-    expect(updatedGameBoard.some((row) => row.includes(1))).toBe(true);
-    expect(updatedGameBoard.some((row) => row.includes(2))).toBe(true);
+    expect(updatedGameBoard.some((row) => row.includes("🔴"))).toBe(true);
+    expect(updatedGameBoard.some((row) => row.includes("🟡"))).toBe(true);
   });
 });
