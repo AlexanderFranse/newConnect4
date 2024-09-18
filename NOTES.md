@@ -90,7 +90,10 @@ Check for horizontal victory
                 -- ✅ Fix Type issue disc / cell
                 -- ✅ Update unit tests and doubles
                 -- ✅ Update component test
-                -- 🍅 Make /dropDisc endpoint passes
+                -- ✅ Make /dropDisc endpoint passes
+                    --- ✅ Fixed the API to parse JSON
+                    --- ✅ makeMove does not return the correct response. Should be gameId + board.
+                -- Update assertions in cucumber test to make it work correctly
     - Double check the dropdisc function implemented corectly 
 
 MakeMove:

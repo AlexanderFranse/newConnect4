@@ -8,13 +8,9 @@ import { newBoard } from "../../src/connect4";
 
 const feature = loadFeature("./cucumber/features/connect4.feature");
 
-const mockLog = jest.fn();
-console.log = mockLog;
-
 defineFeature(feature, (test) => {
   test("user wants to start a new game", ({ when, then, and }) => {
     let response: request.Response;
-
     when("the API is invoked to start a new game", async () => {
       response = await request(app).get("/game/new");
       expect(response.status).toBe(200);
@@ -36,20 +32,25 @@ defineFeature(feature, (test) => {
       expect(response.status).toBe(200);
     });
     when("the API is invoked to drop a disc in the first column", async () => {
+      const { gameId } = response.body;
+      const { board } = response.body;
+
       response = await request(app).post("/game/dropDisc").send({
-        gameId: response.body.gameId,
-        board: response.body.board,
+        gameId,
+        board,
         column: 0,
       });
       expect(response.status).toBe(200);
     });
     then("the API returns the board with a disc in the first column", () => {
-     expect(response.body).toHaveProperty("board")
-     expect(response.body.board[0]).toContain(1)
+      console.log("Response", response.body);
+      expect(response.body).toHaveProperty("board");
+      expect(response.body.board[0]).toContain("🔴");
     });
     and("a disc played by the bot in a column", () => {
-     expect(response.body.board).toContain(2)
+      //     expect(updatedGame.board.some((row) => row.includes("🔴"))).toBe(true);
+
+      expect(response.body.board.some((row: string | string[]) => row.includes("🟡"))).toBe(true);
     });
   });
-
 });

@@ -1,9 +1,8 @@
 export const player1 = "🔴";
 export const player2 = "🟡";
-export const empty = "⚪️"
+export const empty = "⚪️";
 export type Cell = typeof empty | typeof player1 | typeof player2;
 export type Board = Cell[][];
-
 
 export function newBoard(): Board {
   const rows = 6;
@@ -13,9 +12,8 @@ export function newBoard(): Board {
     .map(() => Array(cols).fill(empty));
 }
 
-export const newGameId = (): string => {
-  return Math.random().toString(36).substring(2, 15);
-}
+export const newGameId = (): string =>
+  Math.random().toString(36).substring(2, 15);
 
 export function startNewGame(): { board: Board; gameId: string } {
   return { board: newBoard(), gameId: newGameId() };
@@ -41,19 +39,24 @@ export function isColumnFull(board: Board, column: number): boolean {
   return board[0][column] !== empty;
 }
 
-export function makeMove(board: Board, column: number): Board{
-  // dropDisc
-  // check the victory case
-  // if not turn player
-  const player1 = 1
-  const player2 = 2
- let updatedBoard = dropDisc(board, column, player1);
- const botColumn= columnForBotToDropDisc()
- return dropDisc(updatedBoard, botColumn, player2)
-
-}
-
 export function columnForBotToDropDisc(): number {
   const allowedColumns = [0, 1, 2, 3, 4, 5, 6];
   return allowedColumns[Math.floor(Math.random() * allowedColumns.length)];
+}
+
+export function makeMove(
+  gameId: string,
+  board: Board,
+  column: number
+): { gameId: string; board: Board } {
+  const player = 1;
+  const bot = 2;
+  const updatedBoardAfterPlayerMove = dropDisc(board, column, player);
+  const botColumn = columnForBotToDropDisc();
+  const updatedBoardAfterBotMove = dropDisc(
+    updatedBoardAfterPlayerMove,
+    botColumn,
+    bot
+  );
+  return { gameId, board: updatedBoardAfterBotMove };
 }

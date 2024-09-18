@@ -1,8 +1,10 @@
 import express from "express";
-import { dropDisc, makeMove, newGameId, startNewGame } from "./connect4";
+import { makeMove, newGameId, startNewGame } from "./connect4";
 
 const app = express();
 const port = 3000;
+
+app.use(express.json());
 
 app.get("/game/new", (req, res) => {
   const newGame = startNewGame();
@@ -18,9 +20,10 @@ app.post("/game/dropDisc", (req, res) => {
   }
 
   try {
-    const updatedGame = makeMove(board, column);
+    const updatedGame = makeMove(gameId, board, column);
     res.json(updatedGame);
   } catch (error) {
+    console.log("Error dropping disc", error);
     res
       .status(500)
       .json({ error: "An error occurred while dropping the disc" });
