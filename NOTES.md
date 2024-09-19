@@ -22,7 +22,7 @@ The columns are numbered 0-6 left to right.
 
 # Backlog
 
-🤲 As a player, I want a board that contains 7 columns and 6 rows, so that I am able to play the game
+✅ As a player, I want a board that contains 7 columns and 6 rows, so that I am able to play the game
 
     ✅ Pseudocode E2E scenario - player 1 has a horizontal victory!
         ✅ Add step for player 2 and his little yellow disc
@@ -93,18 +93,8 @@ Check for horizontal victory
                 -- ✅ Make /dropDisc endpoint passes
                     --- ✅ Fixed the API to parse JSON
                     --- ✅ makeMove does not return the correct response. Should be gameId + board.
-                -- Update assertions in cucumber test to make it work correctly
-    - Double check the dropdisc function implemented corectly 
-
-MakeMove:
-- DropDisc from the user
-- DropDisc for the bot
-- Return updated game state
-
-    POST
-        -- GameId
-        -- Column
-        -- Board
+                -- ✅ Update assertions in cucumber test to make it work correctly
+    
 
 ## Backlog
 Think about adding a submodule with the API contract and contract testing functionality (maybe check the full stack cookiecutter)
