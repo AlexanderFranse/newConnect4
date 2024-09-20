@@ -94,6 +94,9 @@ Check for horizontal victory
                     --- ✅ Fixed the API to parse JSON
                     --- ✅ makeMove does not return the correct response. Should be gameId + board.
                 -- ✅ Update assertions in cucumber test to make it work correctly
+    - Write the feature scenario for ending the game
+        -- write e2e test to end the game
+    
     
 
 ## Backlog

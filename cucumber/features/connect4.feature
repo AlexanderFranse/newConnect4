@@ -10,3 +10,14 @@ Scenario: user and bot makes a move
 	When the API is invoked to drop a disc in the first column
 	Then the API returns the board with a disc in the first column
 	And a disc played by the bot in a column
+
+Scenario: player 1 wins by placing four tokens horizontally
+	Given the board is in the following state:
+ 	 ["⚪️", "⚪️", "⚪️", "⚪️", "⚪️", "⚪️", "⚪️"],
+	 ["⚪️", "⚪️", "⚪️", "⚪️", "⚪️", "⚪️", "⚪️"],
+ 	 ["⚪️", "⚪️", "⚪️", "⚪️", "⚪️", "⚪️", "⚪️"],
+ 	 ["⚪️", "⚪️", "🟡", "⚪️", "⚪️", "⚪️", "⚪️"],
+ 	 ["⚪️", "⚪️", "🟡", "⚪️", "⚪️", "⚪️", "⚪️"],
+  	["🔴", "🔴", "🔴", "⚪️", "⚪️", "🟡", "⚪️"],
+	When Player 1 places a token in column 4
+	then The API returns the board, gameId, status of 'Player won'
