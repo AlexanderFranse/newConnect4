@@ -19,5 +19,6 @@ describe("An other feature is making a move", () => {
     expect(updatedGame.board.some((row) => row.includes("🔴"))).toBe(true);
     expect(updatedGame.board.some((row) => row.includes("🟡"))).toBe(true);
     expect(updatedGame.gameId).toBe(gameId);
+    expect(updatedGame.status).toBe("IN_PROGRESS");
   });
 });

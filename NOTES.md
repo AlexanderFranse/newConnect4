@@ -94,8 +94,11 @@ Check for horizontal victory
                     --- ✅ Fixed the API to parse JSON
                     --- ✅ makeMove does not return the correct response. Should be gameId + board.
                 -- ✅ Update assertions in cucumber test to make it work correctly
-    - Write the feature scenario for ending the game
-        -- write e2e test to end the game
+    - ✅ Write the feature scenario for ending the game
+        -- ✅ write e2e test to end the game
+    - Update makeMove component with a victory check after dropping the player's disc.
+        -- 🍅 No victory, actually updating existing testcase.
+        -- Horizontal victory
     
     
 

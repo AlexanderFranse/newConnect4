@@ -11,13 +11,7 @@ Scenario: user and bot makes a move
 	Then the API returns the board with a disc in the first column
 	And a disc played by the bot in a column
 
-Scenario: player 1 wins by placing four tokens horizontally
-	Given the board is in the following state:
- 	 ["⚪️", "⚪️", "⚪️", "⚪️", "⚪️", "⚪️", "⚪️"],
-	 ["⚪️", "⚪️", "⚪️", "⚪️", "⚪️", "⚪️", "⚪️"],
- 	 ["⚪️", "⚪️", "⚪️", "⚪️", "⚪️", "⚪️", "⚪️"],
- 	 ["⚪️", "⚪️", "🟡", "⚪️", "⚪️", "⚪️", "⚪️"],
- 	 ["⚪️", "⚪️", "🟡", "⚪️", "⚪️", "⚪️", "⚪️"],
-  	["🔴", "🔴", "🔴", "⚪️", "⚪️", "🟡", "⚪️"],
-	When Player 1 places a token in column 4
-	then The API returns the board, gameId, status of 'Player won'
+Scenario: player 1 wins by placing four discs horizontally
+	Given there are 3 red discs aligned in the bottom row and the 4th column is free
+	When Player 1 places a disc in column 4
+	Then The API returns the board, gameId, status of 'Player won'

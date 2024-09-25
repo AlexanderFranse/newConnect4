@@ -14,7 +14,6 @@ app.get("/game/new", (req, res) => {
 app.post("/game/dropDisc", (req, res) => {
   const { gameId, board, column } = req.body;
 
-  // Validate request body
   if (!gameId || !board || column === undefined || column < 0 || column > 6) {
     return res.status(400).json({ error: "Invalid request data" });
   }

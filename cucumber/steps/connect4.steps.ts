@@ -4,7 +4,8 @@ import { loadFeature, defineFeature } from "jest-cucumber";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import request from "supertest";
 import app from "../../src/api";
-import { newBoard } from "../../src/connect4";
+import { gameBoardAlmostHorizontalVictoryOnBottomRow } from "../../test/doubles/double";
+import { Board } from "../../src/connect4";
 
 const feature = loadFeature("./cucumber/features/connect4.feature");
 
@@ -45,12 +46,50 @@ defineFeature(feature, (test) => {
     then("the API returns the board with a disc in the first column", () => {
       console.log("Response", response.body);
       expect(response.body).toHaveProperty("board");
-      expect(response.body.board.some((row: string | string[]) => row.includes("🔴"))).toBe(true);
+      expect(
+        response.body.board.some((row: string | string[]) => row.includes("🔴"))
+      ).toBe(true);
     });
     and("a disc played by the bot in a column", () => {
       //     expect(updatedGame.board.some((row) => row.includes("🔴"))).toBe(true);
 
-      expect(response.body.board.some((row: string | string[]) => row.includes("🟡"))).toBe(true);
+      expect(
+        response.body.board.some((row: string | string[]) => row.includes("🟡"))
+      ).toBe(true);
+    });
+  });
+
+  test("player 1 wins by placing four discs horizontally", ({
+    given,
+    when,
+    then,
+  }) => {
+    let response: request.Response;
+    let board: Board;
+    let gameId: string;
+
+    given(
+      "there are 3 red discs aligned in the bottom row and the 4th column is free",
+      async () => {
+        board = gameBoardAlmostHorizontalVictoryOnBottomRow;
+        gameId = "1234";
+      }
+    );
+
+    when("Player 1 places a disc in column 4", async () => {
+      response = await request(app).post("/game/dropDisc").send({
+        gameId,
+        board,
+        column: 3,
+      });
+      expect(response.status).toBe(200);
+    });
+
+    then("the API returns the board, gameId, status of 'Player won'", () => {
+      expect(response.body).toHaveProperty("board");
+      expect(response.body).toHaveProperty("gameId");
+      expect(response.body).toHaveProperty("status");
+      expect(response.body.status).toBe("Player won");
     });
   });
 });

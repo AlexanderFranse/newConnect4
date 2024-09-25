@@ -4,6 +4,13 @@ export const empty = "⚪️";
 export type Cell = typeof empty | typeof player1 | typeof player2;
 export type Board = Cell[][];
 
+enum Status {
+  InProgress = "IN_PROGRESS",
+  PlayerWon = "PLAYER_WON",
+  BotWon = "BOT_WON",
+  Draw = "DRAW",
+}
+
 export function newBoard(): Board {
   const rows = 6;
   const cols = 7;
@@ -48,7 +55,7 @@ export function makeMove(
   gameId: string,
   board: Board,
   column: number
-): { gameId: string; board: Board } {
+): { gameId: string; board: Board; status: Status } {
   const player = 1;
   const bot = 2;
   const updatedBoardAfterPlayerMove = dropDisc(board, column, player);

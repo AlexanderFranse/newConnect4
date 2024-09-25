@@ -62,6 +62,11 @@ components:
           type: string
           description: Unique identifier for the game
           example: "game-123456"
+        status:
+          type: string
+          description: Current status of the game
+          enum: [ "IN_PROGRESS", "PLAYER_WON", "BOT_WON", "DRAW" ]
+          example: "IN_PROGRESS"
       required:
         - board
         - gameId
