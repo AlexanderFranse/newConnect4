@@ -1,6 +1,7 @@
 export const player1 = "🔴";
 export const player2 = "🟡";
 export const empty = "⚪️";
+type PlayerDisc = typeof player1 | typeof player2;
 export type Cell = typeof empty | typeof player1 | typeof player2;
 export type Board = Cell[][];
 
@@ -65,5 +66,22 @@ export function makeMove(
     botColumn,
     bot
   );
-  return { gameId, board: updatedBoardAfterBotMove };
+  return { gameId, board: updatedBoardAfterBotMove, status: Status.InProgress };
 }
+
+export function checkForHorizontalVictory(board: Board, disc: PlayerDisc): boolean {
+  for (let row = 0; row < 6; row += 1) {
+    for (let col = 0; col < 4; col += 1) {
+      if (
+        board[row][col] === disc &&
+        board[row][col + 1] === disc &&
+        board[row][col + 2] === disc &&
+        board[row][col + 3] === disc
+      ) {
+        return true;
+      }
+    }
+  }
+  return false;
+};
+        

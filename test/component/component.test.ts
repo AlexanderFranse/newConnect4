@@ -1,4 +1,5 @@
 import { makeMove, startNewGame } from "../../src/connect4";
+import { gameBoardAlmostHorizontalVictoryOnBottomRow } from "../doubles/double";
 
 describe("It should be possible to start a new game", () => {
   it("And when this is done, an empty game board and a game id should be returned", () => {
@@ -21,4 +22,10 @@ describe("An other feature is making a move", () => {
     expect(updatedGame.gameId).toBe(gameId);
     expect(updatedGame.status).toBe("IN_PROGRESS");
   });
+  it("Which could also lead to a horizontal victory", () => {
+    const gameBoardInProgress = { board: gameBoardAlmostHorizontalVictoryOnBottomRow, gameId: "1" };
+    const columnToDropDisc = 4;
+    const updatedGame5 = makeMove(gameBoardInProgress.gameId, gameBoardInProgress.board,  columnToDropDisc);
+    expect(updatedGame5.status).toBe("PLAYER_WON");
+  } );
 });

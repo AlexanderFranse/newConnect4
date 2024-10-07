@@ -1,13 +1,16 @@
 import { describe } from "node:test";
 import {
+  checkForHorizontalVictory,
   columnForBotToDropDisc,
   dropDisc,
   isColumnFull,
   isValidColumn,
   newBoard,
   newGameId,
+  player1,
 } from "../../src/connect4";
 import {
+  gameBoardHorizontalVictoryOnBottomRow,
   gameBoardInProgress,
   gameBoardThirdColumnFull,
 } from "../doubles/double";
@@ -85,6 +88,22 @@ describe("Connect4 is a game which is played on a board", () => {
         expect(updatedBoard[2][0]).toEqual("🟡");
       });
     });
+    describe("The goal obviously is winning the game", () => {
+      describe("A player can win the game by connecting 4 discs horizontally", () => {
+        it("When there are not yet any three connected discs after I played my disc no victory yet", () => {
+          const board = gameBoardInProgress;
+          const disc = player1;
+          const result = checkForHorizontalVictory(board, disc);
+          expect(result).toBe(false);
+        } );
+        it("So when there are three connected discs in the bottom row and I played the fourth one next to it", () => {
+          const board = gameBoardHorizontalVictoryOnBottomRow;
+          const disc = player1;
+          const result = checkForHorizontalVictory(board, disc);
+          expect(result).toBe(true);
+        } );
+      });
+    });
     describe("A bot should be able to make a move", () => {
       describe("It should pick a random column between 0 and 6", () => {
         it("between 0 and 6 is a good idea", () => {
@@ -94,5 +113,6 @@ describe("Connect4 is a game which is played on a board", () => {
         });
       });
     });
+
   });
 });
