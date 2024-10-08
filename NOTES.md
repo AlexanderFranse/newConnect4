@@ -98,11 +98,16 @@ Check for horizontal victory
         -- ✅ write e2e test to end the game
     - Update makeMove component with a victory check after dropping the player's disc.
         -- ✅ No victory, actually updating existing testcase.
-        -- 🍅 Horizontal victory
-            -- 🍅 Add unit to determine if there is a horizontal victory
-                🍅 Three connected disc, playing on adjacent to it --> true
-                🍅 Two connected discs, playing on a adjacent to it --> false
-                Time to refactor (if any)
+        -- ✅ Horizontal victory for player
+            -- ✅ Add unit to determine if there is a horizontal victory for player
+                ✅ Three connected disc, playing on adjacent to it --> true
+                ✅ Two connected discs, playing on a adjacent to it --> false
+            -- ✅fix the component test
+        -- 🍅 Horizontal victory for bot
+            -- ✅ Add unit to determine if there is a horizontal victory for bot
+                ✅ Three connected disc, playing on adjacent to it --> true
+                ✅ Two connected discs, playing on a adjacent to it --> false
+                -- 🍅 fix the mocking of columnForBotToDropDisc() function
     
     
 

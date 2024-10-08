@@ -8,9 +8,11 @@ import {
   newBoard,
   newGameId,
   player1,
+  player2,
 } from "../../src/connect4";
 import {
   gameBoardHorizontalVictoryOnBottomRow,
+  gameBoardHorizontalVictoryOnBottomRowForBot,
   gameBoardInProgress,
   gameBoardThirdColumnFull,
 } from "../doubles/double";
@@ -90,15 +92,29 @@ describe("Connect4 is a game which is played on a board", () => {
     });
     describe("The goal obviously is winning the game", () => {
       describe("A player can win the game by connecting 4 discs horizontally", () => {
-        it("When there are not yet any three connected discs after I played my disc no victory yet", () => {
+        it("When there are not yet any four connected discs then no victory yet", () => {
           const board = gameBoardInProgress;
           const disc = player1;
           const result = checkForHorizontalVictory(board, disc);
           expect(result).toBe(false);
         } );
-        it("So when there are three connected discs in the bottom row and I played the fourth one next to it", () => {
+        it("When there are four connected discs in the bottom row get victory", () => {
           const board = gameBoardHorizontalVictoryOnBottomRow;
           const disc = player1;
+          const result = checkForHorizontalVictory(board, disc);
+          expect(result).toBe(true);
+        } );
+      });
+      describe("the bot can win the game by connecting 4 discs horizontally", () => {
+        it("When there are not yet any four connected discs then no victory yet", () => {
+          const board = gameBoardInProgress;
+          const disc = player2;
+          const result = checkForHorizontalVictory(board, disc);
+          expect(result).toBe(false);
+        } );
+        it("When there are four connected discs in the bottom row get victory", () => {
+          const board = gameBoardHorizontalVictoryOnBottomRowForBot;
+          const disc = player2;
           const result = checkForHorizontalVictory(board, disc);
           expect(result).toBe(true);
         } );

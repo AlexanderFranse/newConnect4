@@ -59,14 +59,19 @@ export function makeMove(
 ): { gameId: string; board: Board; status: Status } {
   const player = 1;
   const bot = 2;
+  let status = Status.InProgress
   const updatedBoardAfterPlayerMove = dropDisc(board, column, player);
+  if(checkForHorizontalVictory(updatedBoardAfterPlayerMove,player1))
+    status = Status.PlayerWon
   const botColumn = columnForBotToDropDisc();
   const updatedBoardAfterBotMove = dropDisc(
     updatedBoardAfterPlayerMove,
     botColumn,
     bot
   );
-  return { gameId, board: updatedBoardAfterBotMove, status: Status.InProgress };
+  if(checkForHorizontalVictory(updatedBoardAfterBotMove,player2))
+    status = Status.BotWon
+  return { gameId, board: updatedBoardAfterBotMove, status: status };
 }
 
 export function checkForHorizontalVictory(board: Board, disc: PlayerDisc): boolean {
