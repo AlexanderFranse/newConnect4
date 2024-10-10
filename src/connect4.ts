@@ -64,6 +64,7 @@ export function makeMove(
   if(checkForHorizontalVictory(updatedBoardAfterPlayerMove,player1))
     status = Status.PlayerWon
   const botColumn = columnForBotToDropDisc();
+  console.log(botColumn)
   const updatedBoardAfterBotMove = dropDisc(
     updatedBoardAfterPlayerMove,
     botColumn,
