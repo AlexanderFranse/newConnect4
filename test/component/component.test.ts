@@ -1,11 +1,12 @@
 jest.mock('../../src/connect4', () => ({
-  ...jest.requireActual('../../src/connect4'),
   columnForBotToDropDisc: jest.fn(() => 3),
 }));
 
-//import * as moduleUnderTest from '../../src/connect4';
-import { makeMove, startNewGame } from "../../src/connect4";
+import { log } from "console";
+import { makeMove, startNewGame, columnForBotToDropDisc } from "../../src/connect4";
 import { gameBoardAlmostHorizontalVictoryOnBottomRow, gameBoardAlmostHorizontalVictoryOnBottomRowForBot } from "../doubles/double";
+import * as connect4 from '../../src/connect4';
+
 
 
 describe("It should be possible to start a new game", () => {
@@ -38,6 +39,9 @@ describe("An other feature is making a move", () => {
   it.only("Which could also lead to a horizontal victory for bot", () => {
     const gameBoardInProgress = { board: gameBoardAlmostHorizontalVictoryOnBottomRowForBot, gameId: "1" };
     const columnToDropDisc = 4;
+    const mock = columnForBotToDropDisc()
+    console.log("MOCKING>>>"+mock)
+    console.log(connect4); 
     const updatedGame5 = makeMove(gameBoardInProgress.gameId, gameBoardInProgress.board,  columnToDropDisc);
     expect(updatedGame5.status).toBe("BOT_WON");
   } );
