@@ -1,13 +1,6 @@
-jest.mock('../../src/connect4', () => ({
-  columnForBotToDropDisc: jest.fn(() => 3),
-}));
-
-import { log } from "console";
+import * as connect4 from "../../src/connect4";
 import { makeMove, startNewGame, columnForBotToDropDisc } from "../../src/connect4";
 import { gameBoardAlmostHorizontalVictoryOnBottomRow, gameBoardAlmostHorizontalVictoryOnBottomRowForBot } from "../doubles/double";
-import * as connect4 from '../../src/connect4';
-
-
 
 describe("It should be possible to start a new game", () => {
   it("And when this is done, an empty game board and a game id should be returned", () => {
@@ -19,6 +12,10 @@ describe("It should be possible to start a new game", () => {
 });
 
 describe("An other feature is making a move", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    jest.restoreAllMocks();
+  });
   it("Making a move entails dropping the users disc and executing a bot move.", () => {
     const newGame = startNewGame();
     const column = 0;
@@ -37,12 +34,14 @@ describe("An other feature is making a move", () => {
     expect(updatedGame5.status).toBe("PLAYER_WON");
   } );
   it.only("Which could also lead to a horizontal victory for bot", () => {
+    const botColumn = jest.spyOn(connect4, 'columnForBotToDropDisc').mockReturnValue(3);
+
     const gameBoardInProgress = { board: gameBoardAlmostHorizontalVictoryOnBottomRowForBot, gameId: "1" };
     const columnToDropDisc = 4;
     const mock = columnForBotToDropDisc()
     console.log("MOCKING>>>"+mock)
-    console.log(connect4); 
-    const updatedGame5 = makeMove(gameBoardInProgress.gameId, gameBoardInProgress.board,  columnToDropDisc);
+    const updatedGame5 = connect4.makeMove(gameBoardInProgress.gameId, gameBoardInProgress.board,  columnToDropDisc);
+    expect(botColumn).toHaveBeenCalled();
     expect(updatedGame5.status).toBe("BOT_WON");
   } );
 });

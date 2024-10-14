@@ -52,11 +52,7 @@ export function columnForBotToDropDisc(): number {
   return allowedColumns[Math.floor(Math.random() * allowedColumns.length)];
 }
 
-export function makeMove(
-  gameId: string,
-  board: Board,
-  column: number
-): { gameId: string; board: Board; status: Status } {
+export function makeMove(  gameId: string,  board: Board,  column: number): { gameId: string; board: Board; status: Status } {
   const player = 1;
   const bot = 2;
   let status = Status.InProgress
@@ -65,11 +61,7 @@ export function makeMove(
     status = Status.PlayerWon
   const botColumn = columnForBotToDropDisc();
   console.log(botColumn)
-  const updatedBoardAfterBotMove = dropDisc(
-    updatedBoardAfterPlayerMove,
-    botColumn,
-    bot
-  );
+  const updatedBoardAfterBotMove = dropDisc(updatedBoardAfterPlayerMove,botColumn,bot);
   if(checkForHorizontalVictory(updatedBoardAfterBotMove,player2))
     status = Status.BotWon
   return { gameId, board: updatedBoardAfterBotMove, status: status };
