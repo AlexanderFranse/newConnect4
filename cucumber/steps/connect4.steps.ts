@@ -44,15 +44,12 @@ defineFeature(feature, (test) => {
       expect(response.status).toBe(200);
     });
     then("the API returns the board with a disc in the first column", () => {
-      console.log("Response", response.body);
       expect(response.body).toHaveProperty("board");
       expect(
         response.body.board.some((row: string | string[]) => row.includes("🔴"))
       ).toBe(true);
     });
     and("a disc played by the bot in a column", () => {
-      //     expect(updatedGame.board.some((row) => row.includes("🔴"))).toBe(true);
-
       expect(
         response.body.board.some((row: string | string[]) => row.includes("🟡"))
       ).toBe(true);
@@ -89,7 +86,7 @@ defineFeature(feature, (test) => {
       expect(response.body).toHaveProperty("board");
       expect(response.body).toHaveProperty("gameId");
       expect(response.body).toHaveProperty("status");
-      expect(response.body.status).toBe("Player won");
+      expect(response.body.status).toBe("PLAYER_WON");
     });
   });
 });

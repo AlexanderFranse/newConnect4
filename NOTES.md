@@ -103,11 +103,12 @@ Check for horizontal victory
                 ✅ Three connected disc, playing on adjacent to it --> true
                 ✅ Two connected discs, playing on a adjacent to it --> false
             -- ✅fix the component test
-        -- 🍅 Horizontal victory for bot
+        -- ✅ Horizontal victory for bot
             -- ✅ Add unit to determine if there is a horizontal victory for bot
                 ✅ Three connected disc, playing on adjacent to it --> true
                 ✅ Two connected discs, playing on a adjacent to it --> false
-                -- 🍅 fix the mocking of columnForBotToDropDisc() function
+                -- ✅ fix the mocking of columnForBotToDropDisc() function, by refactoring the bot functionality to a separate module
+            -- ✅ Fix typo in assertion in cucumber test
     
     
 

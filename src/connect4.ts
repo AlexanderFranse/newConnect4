@@ -1,3 +1,5 @@
+import { columnForBotToDropDisc } from "./bot";
+
 export const player1 = "🔴";
 export const player2 = "🟡";
 export const empty = "⚪️";
@@ -47,27 +49,10 @@ export function isColumnFull(board: Board, column: number): boolean {
   return board[0][column] !== empty;
 }
 
-export function columnForBotToDropDisc(): number {
-  const allowedColumns = [0, 1, 2, 3, 4, 5, 6];
-  return allowedColumns[Math.floor(Math.random() * allowedColumns.length)];
-}
-
-export function makeMove(  gameId: string,  board: Board,  column: number): { gameId: string; board: Board; status: Status } {
-  const player = 1;
-  const bot = 2;
-  let status = Status.InProgress
-  const updatedBoardAfterPlayerMove = dropDisc(board, column, player);
-  if(checkForHorizontalVictory(updatedBoardAfterPlayerMove,player1))
-    status = Status.PlayerWon
-  const botColumn = columnForBotToDropDisc();
-  console.log(botColumn)
-  const updatedBoardAfterBotMove = dropDisc(updatedBoardAfterPlayerMove,botColumn,bot);
-  if(checkForHorizontalVictory(updatedBoardAfterBotMove,player2))
-    status = Status.BotWon
-  return { gameId, board: updatedBoardAfterBotMove, status: status };
-}
-
-export function checkForHorizontalVictory(board: Board, disc: PlayerDisc): boolean {
+export function checkForHorizontalVictory(
+  board: Board,
+  disc: PlayerDisc
+): boolean {
   for (let row = 0; row < 6; row += 1) {
     for (let col = 0; col < 4; col += 1) {
       if (
@@ -81,5 +66,26 @@ export function checkForHorizontalVictory(board: Board, disc: PlayerDisc): boole
     }
   }
   return false;
-};
-        
+}
+
+export function makeMove(
+  gameId: string,
+  board: Board,
+  column: number
+): { gameId: string; board: Board; status: Status } {
+  const player = 1;
+  const bot = 2;
+  let status = Status.InProgress;
+  const updatedBoardAfterPlayerMove = dropDisc(board, column, player);
+  if (checkForHorizontalVictory(updatedBoardAfterPlayerMove, player1))
+    status = Status.PlayerWon;
+  const botColumn = columnForBotToDropDisc();
+  const updatedBoardAfterBotMove = dropDisc(
+    updatedBoardAfterPlayerMove,
+    botColumn,
+    bot
+  );
+  if (checkForHorizontalVictory(updatedBoardAfterBotMove, player2))
+    status = Status.BotWon;
+  return { gameId, board: updatedBoardAfterBotMove, status };
+}

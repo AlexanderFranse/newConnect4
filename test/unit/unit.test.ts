@@ -1,7 +1,5 @@
-import { describe } from "node:test";
 import {
   checkForHorizontalVictory,
-  columnForBotToDropDisc,
   dropDisc,
   isColumnFull,
   isValidColumn,
@@ -10,6 +8,7 @@ import {
   player1,
   player2,
 } from "../../src/connect4";
+import { columnForBotToDropDisc } from "../../src/bot";
 import {
   gameBoardHorizontalVictoryOnBottomRow,
   gameBoardHorizontalVictoryOnBottomRowForBot,

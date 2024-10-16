@@ -29,8 +29,6 @@ app.post("/game/dropDisc", (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+app.listen(port, () => {});
 
 export default app;
