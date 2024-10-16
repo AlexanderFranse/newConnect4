@@ -15,3 +15,8 @@ Scenario: player 1 wins by placing four discs horizontally
 	Given there are 3 red discs aligned in the bottom row and the 4th column is free
 	When Player 1 places a disc in column 4
 	Then The API returns the board, gameId, status of 'Player won'
+
+Scenario: player 1 wins by placing four discs vertically
+	Given there are no more than 3 red discs aligned in column 3
+	When Player 1 places a disc in column 3
+	Then The API returns the board, gameId, status of 'Player won'

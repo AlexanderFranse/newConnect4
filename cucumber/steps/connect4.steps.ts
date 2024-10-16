@@ -4,7 +4,7 @@ import { loadFeature, defineFeature } from "jest-cucumber";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import request from "supertest";
 import app from "../../src/api";
-import { gameBoardAlmostHorizontalVictoryOnBottomRow } from "../../test/doubles/double";
+import { gameBoardAlmostHorizontalVictoryOnBottomRow, gameBoardInProgress } from "../../test/doubles/double";
 import { Board } from "../../src/connect4";
 
 const feature = loadFeature("./cucumber/features/connect4.feature");
@@ -78,6 +78,40 @@ defineFeature(feature, (test) => {
         gameId,
         board,
         column: 3,
+      });
+      expect(response.status).toBe(200);
+    });
+
+    then("the API returns the board, gameId, status of 'Player won'", () => {
+      expect(response.body).toHaveProperty("board");
+      expect(response.body).toHaveProperty("gameId");
+      expect(response.body).toHaveProperty("status");
+      expect(response.body.status).toBe("PLAYER_WON");
+    });
+  });
+
+  test("player 1 wins by placing four discs vertically", ({
+    given,
+    when,
+    then,
+  }) => {
+    let response: request.Response;
+    let board: Board;
+    let gameId: string;
+
+    given(
+      "there are no more than 3 red discs aligned in column 3",
+      async () => {
+        board = gameBoardInProgress;
+        gameId = "1234";
+      }
+    );
+
+    when("Player 1 places a disc in column 3", async () => {
+      response = await request(app).post("/game/dropDisc").send({
+        gameId,
+        board,
+        column: 2,
       });
       expect(response.status).toBe(200);
     });

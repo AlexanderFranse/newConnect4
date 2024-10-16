@@ -110,8 +110,12 @@ Check for horizontal victory
                 -- ✅ fix the mocking of columnForBotToDropDisc() function, by refactoring the bot functionality to a separate module
             -- ✅ Fix typo in assertion in cucumber test
     
+    - ✅ Add new scenario for a vertical victory for the player
+        - ✅ Add a component test case for a vertical victory in column 3
+    
     
 
 ## Backlog
 Think about adding a submodule with the API contract and contract testing functionality (maybe check the full stack cookiecutter)
 Maybe we can add a "move history" to the API.
+Think about adding scenario's for the bot victories.

@@ -4,6 +4,7 @@ import { makeMove, startNewGame } from "../../src/connect4";
 import {
   gameBoardAlmostHorizontalVictoryOnBottomRow,
   gameBoardAlmostHorizontalVictoryOnBottomRowForBot,
+  gameBoardInProgress,
 } from "../doubles/double";
 
 describe("It should be possible to start a new game", () => {
@@ -61,5 +62,18 @@ describe("An other feature is making a move", () => {
     );
     expect(botColumn).toHaveBeenCalled();
     expect(updatedGame5.status).toBe("BOT_WON");
+  });
+  it("Which could also lead to a vertical victory for player", () => {
+    const gameInProgress = {
+      board: gameBoardInProgress,
+      gameId: "1",
+    };
+    const columnToDropDisc = 2;
+    const updatedGame = makeMove(
+      gameInProgress.gameId,
+      gameInProgress.board,
+      columnToDropDisc
+    );
+    expect(updatedGame.status).toBe("PLAYER_WON");
   });
 });
