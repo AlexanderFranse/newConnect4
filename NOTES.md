@@ -112,6 +112,7 @@ Check for horizontal victory
     
     - ✅ Add new scenario for a vertical victory for the player
         - ✅ Add a component test case for a vertical victory in column 3
+        - ✅ Add unit tests for the vertical victory for the player    
     
     
 
@@ -119,3 +120,5 @@ Check for horizontal victory
 Think about adding a submodule with the API contract and contract testing functionality (maybe check the full stack cookiecutter)
 Maybe we can add a "move history" to the API.
 Think about adding scenario's for the bot victories.
+
+Add a scenario for vertical victory for bot

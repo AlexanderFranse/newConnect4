@@ -1,5 +1,7 @@
+import { describe } from "node:test";
 import {
   checkForHorizontalVictory,
+  checkForVerticalVictory,
   dropDisc,
   isColumnFull,
   isValidColumn,
@@ -8,13 +10,14 @@ import {
   player1,
   player2,
 } from "../../src/connect4";
-import { columnForBotToDropDisc } from "../../src/bot";
 import {
   gameBoardHorizontalVictoryOnBottomRow,
   gameBoardHorizontalVictoryOnBottomRowForBot,
   gameBoardInProgress,
   gameBoardThirdColumnFull,
+  gameBoardVerticalVictory,
 } from "../doubles/double";
+import { columnForBotToDropDisc } from "../../src/bot";
 
 describe("Connect4 is a game which is played on a board", () => {
   describe("When we set up the game, the game..", () => {
@@ -115,6 +118,20 @@ describe("Connect4 is a game which is played on a board", () => {
           const board = gameBoardHorizontalVictoryOnBottomRowForBot;
           const disc = player2;
           const result = checkForHorizontalVictory(board, disc);
+          expect(result).toBe(true);
+        } );
+      });
+      describe("A player can win the game by connecting 4 discs vertically", () => {
+        it("When there are not yet any four connected discs then no victory yet", () => {
+          const board = gameBoardInProgress;
+          const disc = player1;
+          const result = checkForVerticalVictory(board, disc);
+          expect(result).toBe(false);
+        } );
+        it("When there are four connected discs in the column get victory", () => {
+          const board = gameBoardVerticalVictory;
+          const disc = player1;
+          const result = checkForVerticalVictory(board, disc);
           expect(result).toBe(true);
         } );
       });

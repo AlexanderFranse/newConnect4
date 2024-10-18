@@ -68,6 +68,25 @@ export function checkForHorizontalVictory(
   return false;
 }
 
+export function checkForVerticalVictory(
+  board: Board,
+  disc: PlayerDisc
+): boolean {
+  for (let col = 0; col < 7; col += 1) {
+    for (let row = 0; row < 3; row += 1) {
+      if (
+        board[row][col] === disc &&
+        board[row + 1][col] === disc &&
+        board[row + 2][col] === disc &&
+        board[row + 3][col] === disc
+      ) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
 export function makeMove(
   gameId: string,
   board: Board,
@@ -77,7 +96,7 @@ export function makeMove(
   const bot = 2;
   let status = Status.InProgress;
   const updatedBoardAfterPlayerMove = dropDisc(board, column, player);
-  if (checkForHorizontalVictory(updatedBoardAfterPlayerMove, player1))
+  if (checkForHorizontalVictory(updatedBoardAfterPlayerMove, player1) || checkForVerticalVictory(updatedBoardAfterPlayerMove, player1))
     status = Status.PlayerWon;
   const botColumn = columnForBotToDropDisc();
   const updatedBoardAfterBotMove = dropDisc(
